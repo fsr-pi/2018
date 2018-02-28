@@ -17,8 +17,8 @@ Praktični dio sastoji se od zapisnika s intervjua održanog 28.2.2018., plana p
 
 ### Zadaci za praktični dio
 1. Isporučiti zapisnik s intervjua
-	* isporučuje se individualno (svatko u svoju privatnu mapu). Isporuka započinje prihvaćanjem zadatka na sljedećoj poveznici (bit će objavljeno naknadno) čime će se automatski stvoriti privatna mapa za isporuku sadržaja zadatka. 
-	* **Rok za predaju zapisnika je ? ?.?.2018. u ?:? **
+	* isporučuje se individualno (svatko u svoju privatnu mapu). Isporuka započinje prihvaćanjem zadatka na sljedećoj poveznici https://classroom.github.com/a/ezjKZTtg čime će se automatski stvoriti privatna mapa za isporuku sadržaja zadatka. 
+	* **Rok za predaju zapisnika je 7.3.2018. u 15:00 **
 	 
 2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju ?.?.2018. u ?:??**
 3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju ?.?.2018. u ?:00**
