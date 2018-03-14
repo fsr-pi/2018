@@ -20,13 +20,14 @@ Praktični dio sastoji se od zapisnika s intervjua održanog 28.2.2018., plana p
 	* isporučuje se individualno (svatko u svoju privatnu mapu). Isporuka započinje prihvaćanjem zadatka na sljedećoj poveznici https://classroom.github.com/a/ezjKZTtg čime će se automatski stvoriti privatna mapa za isporuku sadržaja zadatka. 
 	* **Rok za predaju zapisnika je 7.3.2018. u 15:00 **
 	 
-2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju ?.?.2018. u ?:??**
-3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju ?.?.2018. u ?:00**
-4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju ?.?.2018. u ?:00**
+2. Plan projekta **Rok za predaju 26.3.2018. u 8:00**
+3. Specifikacija zahtjeva- **Rok za predaju 26.3.2018. u 8:00**
+4. Specifikacija dizajna - **Rok za predaju 6.4.2018. u 15:00**
 	* Plan projekta, specifikacija zahtjeva i specifikacija dizajna isporučuju se u zajedničku mapu grupe.  
-	Mapa će stvoriti nakon što prva osoba iz grupe prihvati zadatak koji se nalazi na sljedećoj poveznici (bit će objavljeno naknadno) 
+	Mapa će stvoriti nakon što prva osoba iz grupe prihvati zadatak koji se nalazi na sljedećoj poveznici https://classroom.github.com/g/OP4f5uzN
 	te pritom stvori grupu s nazivom grupaX (X je broj grupe). Ostali prihvaćaju zadatak na istoj poveznici, ali prilikom prihvaćanja umjesto unosa nove grupe odabiru postojeću grupu i pridružuju se.
-	Isporučene dokumente možete mijenjati neograničen broj puta do krajnjeg roka.
+	Isporučene dokumente možete mijenjati neograničen broj puta do krajnjeg roka. 
+	U sklopu izrade specifikacije dizajna bazu podataka treba ugraditi na zajednički server te je popuniti s nekoliko reprezentativnih podataka.
 
 5. Web aplikacija - detaljnije nakon sljedećih predavanja **Rok za predaju ?.?.2018. u ?:00**
 6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja **Rok za predaju ?.?.2018. u ?:00**
