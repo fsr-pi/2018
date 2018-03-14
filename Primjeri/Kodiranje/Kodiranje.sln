@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Barikade", "Barikade\Barika
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Using", "Using\Using.csproj", "{651849D3-A211-49F6-8262-D55F5B25EE26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conditional", "Conditional\Conditional.csproj", "{593670F9-E66B-40F6-A9D6-58CBCAECDA73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{651849D3-A211-49F6-8262-D55F5B25EE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{651849D3-A211-49F6-8262-D55F5B25EE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{651849D3-A211-49F6-8262-D55F5B25EE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593670F9-E66B-40F6-A9D6-58CBCAECDA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593670F9-E66B-40F6-A9D6-58CBCAECDA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593670F9-E66B-40F6-A9D6-58CBCAECDA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593670F9-E66B-40F6-A9D6-58CBCAECDA73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
