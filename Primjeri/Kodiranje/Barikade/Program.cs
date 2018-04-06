@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Text;
 
 namespace Barikade
 {
   class Program
   {
-
     static void Main(string[] args)
     {
-      Pitagora p = new Pitagora();
-      //Console.WriteLine(p.Korijen(-5)); //što se događa kad ovo otkomentiramo (Debug? , Release?)
-      p.A = -3;
-      p.SetBFromString("abc");
-      Console.WriteLine("Katete: {0}, {1}, hipotenuza {2}", p.A, p.B, p.C);
+      Console.OutputEncoding = Encoding.UTF8;
+
+      Predmet p = new Predmet("RPPP");
+      p["Pero"] = 2;
+      p["Ana"] = 5;
+      p["Ivan"] = 5;
+      p["Marko"] = 1;
+      p["Luka"] = 3;
+      //p["Marija"] = -7; //treba uzrokovati iznimku 
+      Console.WriteLine("Prosječna ocjena na predmetu: " + p.ProsjecnaOcjena());
+      Console.WriteLine("Ante ima ocjenu: " + p["Ante"]); //ispisat će -1
     }
   }
 }
