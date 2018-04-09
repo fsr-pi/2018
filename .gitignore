@@ -473,3 +473,6 @@ typings/
 
 
 # End of https://www.gitignore.io/api/docfx,linux,bower,windows,aspnetcore,visualstudio,visualstudiocode
+
+#Automatski generirani lib pomoću bowera
+**/wwwroot/lib
