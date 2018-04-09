@@ -1,0 +1,35 @@
+﻿@model Drzava
+
+@{
+  ViewBag.Title += "Nova država";
+}
+
+<h2>Unos nove države</h2>
+
+<form asp-action="Create" method="post">
+  <div asp-validation-summary="All"></div>
+  <div class="form-group">
+    <label asp-for="OznDrzave"></label>
+    <div><span asp-validation-for="OznDrzave" class="text-danger" /></div>
+    <input asp-for="OznDrzave" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="NazDrzave"></label>
+    <div><span asp-validation-for="NazDrzave" class="text-danger" /></div>
+    <input asp-for="NazDrzave" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="Iso3drzave"></label>
+    <div><span asp-validation-for="Iso3drzave" class="text-danger" /></div>
+    <input maxlength="3" asp-for="Iso3drzave" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="SifDrzave"></label>
+    <div><span asp-validation-for="SifDrzave" class="text-danger" /></div>
+    <input asp-for="SifDrzave" class="form-control" />
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Dodaj</button>
+    <a asp-action="Index" class="btn btn-secondary">Odustani</a>
+  </div>
+</form>

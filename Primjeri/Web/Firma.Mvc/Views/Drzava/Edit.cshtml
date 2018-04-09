@@ -1,0 +1,38 @@
+﻿@model Drzava
+
+@{
+  ViewBag.Title += "Ažuriranje države";
+}
+
+<form 
+      asp-route-page="@ViewBag.Page"
+      asp-route-sort="@ViewBag.Sort"
+      asp-route-ascending="@ViewBag.Ascending"
+      method="post">
+  <div asp-validation-summary="All"></div>
+  @*Ne koristi se, jer se ne rekonstruira cijela država, već se samo koristi id koji je već u parametrima route*@
+  @*<input type="hidden" asp-for="OznDrzave" />*@ 
+  <div class="form-group">
+    <label asp-for="NazDrzave"></label>
+    <div><span asp-validation-for="NazDrzave" class="text-danger"></span></div>
+    <input asp-for="NazDrzave" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="Iso3drzave"></label>
+    <div><span asp-validation-for="Iso3drzave" class="text-danger"></span></div>
+    <textarea asp-for="Iso3drzave" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label asp-for="SifDrzave"></label>
+    <div><span asp-validation-for="SifDrzave" class="text-danger"></span></div>
+    <input asp-for="SifDrzave" class="form-control" />
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Spremi</button>
+    <a asp-action="Index"
+       asp-route-page="@ViewBag.Page"
+       asp-route-sort="@ViewBag.Sort"
+       asp-route-ascending="@ViewBag.Ascending"
+       class="btn btn-secondary">Odustani</a>
+  </div>
+</form>

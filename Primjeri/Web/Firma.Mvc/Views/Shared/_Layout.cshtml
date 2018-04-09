@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="hr_HR" xml:lang="hr_HR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FirmaMvcCore - @ViewData["Title"]</title>
+
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="~/css/site.css" />
+  @RenderSection("styles", required: false)
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" asp-action="Index" asp-controller="Home">Firma MVC ASP.NET Core</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      @await Component.InvokeAsync("Navigation")
+    </div>
+  </nav>
+
+  <main>
+    <div>
+      @if (TempData[Constants.Message] != null)
+      {
+        bool error = false;
+        var obj = TempData[Constants.ErrorOccurred];
+        if (obj != null)
+        {
+          error = (bool)obj;
+        }
+        <div class="alert @(error ? "alert-danger" : "alert-success")">@TempData[Constants.Message]</div>
+      }
+    </div>
+
+    @RenderBody()
+  </main>
+  <hr />
+  <footer>
+    <p class="text-center">&copy; 2018 - RPPP, ZPR, FER</p>
+  </footer>
+
+  <script src="~/lib/jquery/dist/jquery.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script asp-src-include="~/lib/jquery-validation/**/jquery.validate.min.js"></script>
+  <script asp-src-include="~/lib/jquery-validation-unobtrusive/**/*.min.js"></script>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/solid.js" integrity="sha384-P4tSluxIpPk9wNy8WSD8wJDvA8YZIkC6AQ+BfAFLXcUZIPQGu4Ifv4Kqq+i2XzrM" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js" integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY" crossorigin="anonymous"></script>
+
+  <script src="~/js/site.js" asp-append-version="true"></script>
+
+  @RenderSection("scripts", required: false)
+</body>
+</html>

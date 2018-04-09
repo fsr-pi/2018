@@ -1,0 +1,38 @@
+﻿@{
+  ViewData["Title"] = "Početna stranica";
+}
+
+<p>
+  Primjerom se ilustrira nekoliko karakterističnih primjera korištenja MVC-a i ASP.NET Corea.
+</p>
+<p>
+  Primjer s državama prikazuje podatke iz tablice koja nema stranih ključeva. Prilikom pregleda
+  prikazuje se po n podataka po stranici pri čemu je podatak o broju elemenata po stranici
+  zapisan u konfiguracijskoj datoteci appsettings.json (novitet iz .NET Corea).
+</p>
+<p>
+  Također se vodi računa o tome da ako krenemo u ažuriranje neke države da se nakon ažuriranja vratimo
+  na istu stranicu na kojoj smo bili prije odlaska na ažuriranje.
+</p>
+<p>
+  Omogućeno je dodavanje novih država, ažuriranje i brisanje postojećih, pri čemu se
+  ažuriranje obavlja na posebnoj stranici.
+</p>
+<p>
+  Primjer s partnerima je primjer hijerarhije klasa Partner, Tvrtka i Osoba, što je u bazi podataka
+  modelirano u obliku TPT (Table per type). Spojeni podaci dohvaćaju se preko pogleda koji je naknadno
+  ručno dodan u data model.
+</p>
+<p>
+  Kod dodavanja novog partnera pomoću javascripta se dinamički mijenjaju kontrole za unos ovisno radi se li se
+  o tvrtki ili osobi, a odabir mjesta se vrši pomoću padajuće liste
+</p>
+<p>
+  Ažuriranje unutar retka korištenjem javascripta i ajax demonstrirano je na primjeru s popisom mjesta
+  koji ima strani ključ na tablicu država, pa je odabir države izveden u padajućoj listi.
+</p>
+<p>
+  Primjer s dokumentima je primjer master-detail forme kod koje je odabir stranog ključa
+  za veliki broj mogućnosti izveden javascriptom pomoću autocompleta uz korištenjem
+  Web API controllera.
+</p>

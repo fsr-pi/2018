@@ -1,0 +1,72 @@
+﻿
+<ul class="navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link"
+        asp-action="Index" asp-controller="Home">
+      Početna stranica
+    </a>
+  </li>
+    
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Drzava" ? "active": "")"
+        asp-action="Index" asp-controller="Drzava">
+      Države
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Mjesto" ? "active": "")"
+        asp-action="Index" asp-controller="Mjesto">
+      Mjesta
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Artikl" ? "active": "")"
+        asp-action="Index" asp-controller="Artikl">
+      Artikli
+    </a>
+  </li>
+ 
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Partner" ? "active": "")"
+        asp-action="Index" asp-controller="Partner">
+      Partneri
+    </a>
+  </li>
+ 
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Dokument" ? "active": "")"
+        asp-action="Index" asp-controller="Dokument">
+      Dokumenti
+    </a>
+  </li>
+ 
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "Report" ? "btn-primary": "")"
+        asp-action="Index" asp-controller="Report">
+      Izvještaji
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link 
+  @(ViewBag.Controller == "ViewLog" ? "btn-primary": "")"
+        asp-action="Index" asp-controller="ViewLog">
+      Pregled log datoteka
+    </a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link"
+        asp-controller="swagger">
+      WebApi dokumentacija
+    </a>
+  </li>
+</ul>

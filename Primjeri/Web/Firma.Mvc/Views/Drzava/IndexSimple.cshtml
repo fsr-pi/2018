@@ -1,0 +1,58 @@
+﻿@using Firma.Mvc.Models;
+@model IEnumerable<Drzava>
+@{
+  ViewData["Title"] = "Popis država";
+}
+<h2>Popis država</h2>
+
+<table class="table table-sm table-striped table-hover" id="tabledrzave">
+  <thead>
+    <tr>
+      <th>Oznaka države</th>
+      <th>Naziv države</th>
+      <th>Iso3 oznaka</th>
+      <th>Šifra države</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var drzava in Model)
+    {
+      <tr>
+        <td class="text-center">@drzava.OznDrzave</td>
+        <td class="text-left">@drzava.NazDrzave</td>
+        <td class="text-center">@drzava.Iso3drzave</td>
+        <td class="text-center">@drzava.SifDrzave</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@section styles{
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+}
+
+@section scripts{
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tabledrzave').DataTable({
+        language: {
+          search: "Pretraga",
+          info: "_START_ - _END_ (ukupno _TOTAL_)",
+          lengthMenu: "Prikaži _MENU_ zapisa",
+          paginate: {
+            first: "Prva",
+            previous: "Prethodna",
+            next: "Sljedeća",
+            last: "Zadnja"
+          },
+          emptyTable: "Nema podataka za prikaz",
+          info: "_START_ - _END_ od ukupno _TOTAL_ zapisa",
+          infoEmpty: "Nema podataka za prikaz",
+          infoFiltered: "(filtrirano od ukupno _MAX_ zapisa)",
+        }
+      });
+    });
+  </script>
+}
