@@ -25,6 +25,8 @@ namespace Firma.Mvc.Controllers
     public IActionResult Index()
     {
       var mjesta = ctx.Mjesto
+                      .OrderBy(m => m.OznDrzaveNavigation.NazDrzave)
+                      .ThenBy(m => m.PostBrMjesta)
                       .Select(m => new MjestoViewModel
                       {
                         IdMjesta = m.IdMjesta,

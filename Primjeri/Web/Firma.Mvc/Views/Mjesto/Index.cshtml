@@ -4,7 +4,7 @@
 }
 <h2>Popis mjesta</h2>
 
-<table class="table table-sm table-striped table-hover" id="tabledrzave">
+<table class="table table-sm table-striped table-hover" id="tablemjesta">
   <thead>
     <tr>
       <th>Poštanski broj mjesta</th>
@@ -35,22 +35,8 @@
   <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script>
     $(document).ready(function () {
-      $('#tabledrzave').DataTable({
-        language: {
-          search: "Pretraga",
-          info: "_START_ - _END_ (ukupno _TOTAL_)",
-          lengthMenu: "Prikaži _MENU_ zapisa",
-          paginate: {
-            first: "Prva",
-            previous: "Prethodna",
-            next: "Sljedeća",
-            last: "Zadnja"
-          },
-          emptyTable: "Nema podataka za prikaz",
-          info: "_START_ - _END_ od ukupno _TOTAL_ zapisa",
-          infoEmpty: "Nema podataka za prikaz",
-          infoFiltered: "(filtrirano od ukupno _MAX_ zapisa)",
-        }
+        $('#tablemjesta').DataTable({
+        language: tableLangSettings
       });
     });
   </script>
