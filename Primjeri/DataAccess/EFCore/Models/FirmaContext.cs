@@ -20,14 +20,17 @@ namespace EFCore.Models
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      var config = new ConfigurationBuilder()
+      if (!optionsBuilder.IsConfigured)
+      {
+        var config = new ConfigurationBuilder()
                       .AddUserSecrets("Firma")
                       .SetBasePath(Directory.GetCurrentDirectory())
                       .AddJsonFile("appsettings.json")
                       .Build();
-      string connString = config["ConnectionStrings:Firma"];
-      connString = connString.Replace("sifra", config["FirmaSqlPassword"]);
-      optionsBuilder.UseSqlServer(connString);
+        string connString = config["ConnectionStrings:Firma"];
+        connString = connString.Replace("sifra", config["FirmaSqlPassword"]);
+        optionsBuilder.UseSqlServer(connString);
+      }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
