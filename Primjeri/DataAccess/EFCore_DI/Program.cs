@@ -34,9 +34,9 @@ namespace EFCore_DI
           Artikl artikl = new Artikl()
           {
             SifArtikla = sifraArtikla,
-            CijArtikla = 10m,
+            CijArtikla = 100m,
             JedMjere = "kom",
-            NazArtikla = "Burek sa sirom"
+            NazArtikla = "Mobitel Hwang-Ho 5.2"
           };
           context.Artikl.Add(artikl);
           context.Set<Artikl>().Add(artikl);
@@ -57,7 +57,7 @@ namespace EFCore_DI
         using (var context = serviceProvider.GetService<FirmaContext>())
         {
           Artikl artikl = context.Artikl.Find(sifraArtikla);
-          artikl.CijArtikla = 11m;
+          artikl.CijArtikla = 111m;
           context.SaveChanges();
           Console.WriteLine("Cijena artikla izmijenjena");
         }
