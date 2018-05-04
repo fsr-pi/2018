@@ -1,23 +1,41 @@
-﻿.validation-summary-errors { font-weight: bold; color:#a94442;}
-.validation-summary-valid { display: none;}
-.input-validation-error{
-    border-color:red;
+﻿.validation-summary-errors {
+    font-weight: bold;
+    color: #a94442;
 }
-.pagebox{
-    width:60px;
+
+.validation-summary-valid {
+    display: none;
 }
-.malaslika{
-    height:40px;
+
+.input-validation-error {
+    border-color: red;
+}
+
+.pagebox {
+    width: 40px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .pagebox::selection {
+        background-color: grey;
+    }
+
+
+.malaslika {
+    height: 40px;
 }
 
 .ui-autocomplete {
-  max-height: 200px;
-  overflow-y: auto;
-  /* prevent horizontal scrollbar */
-  overflow-x: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
 }
 
-main{
-  padding-left:50px;
-  padding-right:50px;
+main {
+    padding-left: 50px;
+    padding-right: 50px;
 }
