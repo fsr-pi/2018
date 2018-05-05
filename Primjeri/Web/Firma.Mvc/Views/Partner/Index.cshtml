@@ -1,0 +1,63 @@
+﻿@model PartneriViewModel
+
+@{
+    ViewBag.Title += "Države";
+}
+
+<h2>Popis partnera</h2>
+
+
+<a asp-action="Create">Unos novog partnera</a>
+
+<pager page-info="@Model.PagingInfo" page-action="Index" page-title="Unesite željenu stranicu"
+       class="float-right">
+</pager>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @{
+                string[] nazivi = { "Id partnera", "Tip partnera", "OIB", "Naziv" };
+                for (int i = 1; i <= nazivi.Length; i++)
+                {
+                    <th>
+                        <a asp-route-sort="@i" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == i ? Model.PagingInfo.Ascending? false : true : true)">
+                            @nazivi[i - 1]
+                        </a>
+                    </th>
+                }
+            }
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var partner in Model.Partneri)
+        {
+            <tr>
+                <td class="text-left">@partner.IdPartnera</td>
+                <td class="text-left">@partner.TipPartneraText</td>
+                <td class="text-left">@partner.OIB</td>
+                <td class="text-left">@partner.Naziv</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@partner.IdPartnera"
+                       asp-route-page="@Model.PagingInfo.CurrentPage"
+                       asp-route-sort="@Model.PagingInfo.Sort"
+                       asp-route-ascending="@Model.PagingInfo.Ascending"
+                       class="btn btn-warning btn-sm" title="Ažuriraj"><i class="fas fa-edit"></i></a>
+                </td>
+                <td>
+                    <form asp-action="Delete" method="post"
+                          asp-route-page="@Model.PagingInfo.CurrentPage"
+                          asp-route-sort="@Model.PagingInfo.Sort"
+                          asp-route-ascending="@Model.PagingInfo.Ascending">
+                        <input type="hidden" name="IdPartnera" value="@partner.IdPartnera" />
+                        <button type="submit" class="btn btn-sm btn-danger delete" title="Obriši"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

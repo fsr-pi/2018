@@ -10,6 +10,8 @@
     public static string ErrorOccurred
     {
       get { return "ErrorOccurred"; }
-    }    
+    }
+
+    public const string SqlViewDokumenti = "SELECT * FROM vw_dokumenti";
   }
 }

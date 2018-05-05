@@ -1,0 +1,57 @@
+﻿@model ArtikliViewModel
+
+@{
+    ViewBag.Title += "Artikli";
+}
+
+<h2>Popis artikala</h2>
+
+
+<a asp-action="Create">Unos novog artikla</a>
+
+<pager page-info="@Model.PagingInfo" page-action="Index" page-title="Unesite željenu stranicu"
+       class="float-right">
+</pager>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @{
+                string[] nazivi = { "", "Šifra", "Naziv", "Jedinica mjere", "Cijena", "Usluga", "Opis" };
+                bool[] sortable = { false, true, true, true, true, true, false };
+                for (int i = 1; i <= nazivi.Length; i++)
+                {
+                    <th>
+                        @if (sortable[i - 1])
+                        {
+                            <a asp-route-sort="@i" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == i ? Model.PagingInfo.Ascending? false : true : true)">
+                                @nazivi[i - 1]
+                            </a>
+                        }
+                        else
+                        {
+                            @nazivi[i - 1]
+                        }
+                    </th>
+                }
+            }
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var artikl in Model.Artikli)
+        {
+            @Html.Partial("Row", artikl)
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            SetEditAjax(".editajax", '@Url.Action("Edit")', 'sifartikla');
+            SetDeleteAjax(".deleteajax", '@Url.Action("Delete")', 'sifartikla');
+        });
+    </script>
+}

@@ -1,0 +1,77 @@
+﻿@model Artikl
+
+@{
+  ViewBag.Title += "Novi artikl";
+}
+
+<h2>Unos novog artikla</h2>
+
+<div class="container">
+  <form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="form-group row"></div>
+
+    <div class="form-group row">
+      <label asp-for="SifArtikla" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input asp-for="SifArtikla" class="form-control" />
+      </div>
+      <span asp-validation-for="SifArtikla" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="NazArtikla" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input asp-for="NazArtikla" class="form-control" />
+      </div>
+      <span asp-validation-for="NazArtikla" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="JedMjere" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input asp-for="JedMjere" class="form-control" />
+      </div>
+      <span asp-validation-for="JedMjere" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="CijArtikla" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input asp-for="CijArtikla" class="form-control" />
+      </div>
+      <span asp-validation-for="CijArtikla" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="ZastUsluga" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-1 text-left">
+        <input asp-for="ZastUsluga" class="form-control input-sm" />
+      </div>
+      <span asp-validation-for="ZastUsluga" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="TekstArtikla" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input asp-for="TekstArtikla" class="form-control" />
+      </div>
+      <span asp-validation-for="TekstArtikla" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <label asp-for="SlikaArtikla" class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-5">
+        <input type="file" name="slika" />
+      </div>
+      <span asp-validation-for="SlikaArtikla" class="col-sm-5 text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5">
+        <button class="btn btn-primary" type="submit">Dodaj</button>
+        <a asp-action="Index" class="btn btn-secondary">Odustani</a>
+      </div>
+    </div>
+  </form>
+</div>

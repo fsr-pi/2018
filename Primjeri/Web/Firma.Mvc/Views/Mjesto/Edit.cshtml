@@ -1,0 +1,43 @@
+﻿@model Mjesto
+
+@{
+    ViewBag.Title += "Ažuriranje mjesta";
+}
+
+<form asp-route-page="@ViewBag.Page"
+      asp-route-sort="@ViewBag.Sort"
+      asp-route-ascending="@ViewBag.Ascending"
+      method="post">
+    <input type="hidden" asp-for="IdMjesta" />
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="PostBrMjesta"></label>
+        <div><span asp-validation-for="PostBrMjesta" class="text-danger"></span></div>
+        <input asp-for="PostBrMjesta" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="NazMjesta"></label>
+        <div><span asp-validation-for="NazMjesta" class="text-danger"></span></div>
+        <input asp-for="NazMjesta" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PostNazMjesta"></label>
+        <div><span asp-validation-for="PostNazMjesta" class="text-danger"></span></div>
+        <input asp-for="PostNazMjesta" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="OznDrzave"></label>
+        <div><span asp-validation-for="OznDrzave" class="text-danger"></span></div>
+        <select class="form-control" asp-for="OznDrzave" asp-items="ViewBag.Drzave">
+            <option disabled selected value="">Odaberite državu</option>
+        </select>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Spremi</button>
+        <a asp-action="Index"
+           asp-route-page="@ViewBag.Page"
+           asp-route-sort="@ViewBag.Sort"
+           asp-route-ascending="@ViewBag.Ascending"
+           class="btn btn-secondary">Odustani</a>
+    </div>
+</form>

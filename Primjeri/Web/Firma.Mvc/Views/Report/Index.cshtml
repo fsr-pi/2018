@@ -1,0 +1,17 @@
+﻿@{
+  ViewData["Title"] = "Izvještaji";
+}
+
+<ul>
+  <li>
+    <a target="_blank" asp-action="Drzave">Popis svih država</a>
+    @*<a target="_blank" asp-action="@nameof(Firma.Mvc.Controllers.ReportController.Drzave)">Popis svih država</a>*@
+    @*<a target="_blank" href="@Url.Action("Drzave")">Popis svih država</a>*@
+  </li> 
+  <li>
+    <a target="_blank" asp-action="Artikli">10 najskupljih artikala sa slikom</a>
+  </li>
+  <li>
+    <a target="_blank" asp-action="Dokumenti">10 dokumenata s najvećim iznosom</a>
+  </li>
+</ul>

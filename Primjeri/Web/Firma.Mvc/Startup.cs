@@ -44,9 +44,17 @@ namespace Firma.Mvc
       {
         app.UseDeveloperExceptionPage();
       }
-
+      
       app.UseStaticFiles();
-      app.UseMvcWithDefaultRoute();
+
+      app.UseMvc(routes =>
+      {
+        routes.MapRoute(null, "Artikl/Page{page}", new { Controller = "Artikl", action = "Index" });
+        routes.MapRoute(null, "Mjesto/Page{page}", new { Controller = "Mjesto", action = "Index" });
+        routes.MapRoute(
+              name: "default",
+              template: "{controller=Home}/{action=Index}/{id?}");
+      });
     }
   }
 }

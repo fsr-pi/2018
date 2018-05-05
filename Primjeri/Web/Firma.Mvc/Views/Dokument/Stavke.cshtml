@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StavkaViewModel>
+<table class="table table-striped" id="table-stavke">
+    <thead>
+        <tr>
+            @{
+                string[] nazivi = { "Artikl", "Količina", "Rabat [0-1]", "Jedinična cijena", "Iznos" };
+                for (int i = 0; i < nazivi.Length; i++)
+                {
+                    <th class="text-center">
+                        @nazivi[i]                        
+                    </th>
+                }
+            }
+            <th></th>           
+        </tr>
+    </thead>
+    <tbody>      
+        @foreach(var stavka in Model)
+        {           
+            <tr>
+                <td class="text-left col-sm-4">
+                    <input type="hidden" name="Stavke.Index" value="@stavka.SifArtikla"/>
+                    <input type="hidden" name="Stavke[@stavka.SifArtikla].IdStavke" value="@stavka.IdStavke" />
+                    <input type="hidden" name="Stavke[@stavka.SifArtikla].SifArtikla" value="@stavka.SifArtikla" /> 
+                    <input type="hidden" name="Stavke[@stavka.SifArtikla].NazArtikla" value="@stavka.NazArtikla" />
+                    @stavka.NazArtikla                                 
+                </td>
+                <td class="text-center col-sm-1">
+                    <input name="Stavke[@stavka.SifArtikla].KolArtikla" class="form-control" value="@stavka.KolArtikla"/>
+                </td>
+                <td class="text-center col-sm-1">
+                    <input name="Stavke[@stavka.SifArtikla].PostoRabat" class="form-control" value="@stavka.PostoRabat" />
+                </td>
+                <td class="text-right col-sm-3">
+                    <input type="hidden" name="Stavke[@stavka.SifArtikla].JedCijArtikla" value="@stavka.JedCijArtikla" />
+                    @stavka.JedCijArtikla.ToString("C2")
+                </td>               
+                <td class="text-right col-sm-2">@stavka.IznosArtikla.ToString("C2")</td>
+                <td>
+                    <button class="btn btn-sm btn-danger deleterow" title="Izbaci"><i class="fa fa-minus"></i></button>
+                </td>               
+            </tr>
+        }        
+        <tr>
+            <td >
+                <input id="artikl-sifra" type="hidden" data-autocomplete-id="artikl" readonly="readonly" />
+                <input id="artikl-naziv" type="text" data-autocomplete-artikl="artikl" />                
+            </td>
+            <td class="text-center col-sm-1">
+                <input id="artikl-kolicina" type="text" /> 
+            </td>
+            <td class="text-center col-sm-1">
+                <input id="artikl-rabat" type="text" />
+            </td>
+            <td class="text-right col-sm-2">
+                <input id="artikl-cijena"  type="text" data-autocomplete-cijena="artikl" readonly="readonly" />
+            </td>
+            <td class="text-left" colspan="3">
+                <button id="artikl-dodaj" class="btn btn-sm btn-secondary" title="Dodaj"><i class="fas fa-plus"></i></span></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -14,6 +14,9 @@ namespace Firma.Mvc.Models
     public virtual DbSet<Partner> Partner { get; set; }
     public virtual DbSet<Stavka> Stavka { get; set; }
     public virtual DbSet<Tvrtka> Tvrtka { get; set; }
+    public virtual DbSet<ViewPartner> vw_Partner { get; set; }
+    public virtual DbSet<ViewDokumentInfo> ViewDokumentInfo { get; set; }
+    public virtual DbSet<StavkaDenorm> StavkaDenorm { get; set; }
 
     public FirmaContext(DbContextOptions<FirmaContext> options) : base(options)
     {
@@ -21,6 +24,18 @@ namespace Firma.Mvc.Models
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+      modelBuilder.Entity<ViewPartner>(entity =>
+      {
+        entity.HasKey(e => e.IdPartnera);
+      });
+      modelBuilder.Entity<ViewDokumentInfo>(entity =>
+      {
+        entity.HasKey(e => e.IdDokumenta);
+      });
+      modelBuilder.Entity<StavkaDenorm>(entity =>
+      {
+        entity.HasKey(e => e.IdStavke);
+      });
       modelBuilder.Entity<Artikl>(entity =>
       {
         entity.HasKey(e => e.SifArtikla)
@@ -196,9 +211,7 @@ namespace Firma.Mvc.Models
 
         entity.HasIndex(e => new { e.IdDokumenta, e.SifArtikla })
             .HasName("IX_Stavka_SifArtikla_IdDokumenta")
-            .IsUnique();
-
-        entity.Property(e => e.IdDokumenta).HasDefaultValueSql("((0))");
+            .IsUnique();       
 
         entity.Property(e => e.JedCijArtikla)
             .HasColumnType("money")

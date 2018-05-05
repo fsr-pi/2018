@@ -1,0 +1,101 @@
+﻿@model PartnerViewModel
+
+@{
+    ViewBag.Title += "Novi partner";
+}
+
+<h2>Unos nove osobe</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All"></div>  
+    <div class="text-center">
+        <label class="radio-inline"><input type="radio" asp-for="TipPartnera" value="O">Osoba</label>
+        <label class="radio-inline"><input type="radio" asp-for="TipPartnera" value="T">Tvrtka</label>
+    </div>
+    <div class="form-group samotvrtka">
+        <label asp-for="NazivTvrtke"></label>
+        <div><span asp-validation-for="NazivTvrtke" class="text-danger"></span></div>
+        <input asp-for="NazivTvrtke" class="form-control" />
+    </div>
+    <div class="form-group samotvrtka">
+        <label asp-for="MatBrTvrtke"></label>
+        <div><span asp-validation-for="MatBrTvrtke" class="text-danger"></span></div>
+        <input asp-for="MatBrTvrtke" class="form-control" />
+    </div>    
+    <div class="form-group samoosoba">
+        <label asp-for="ImeOsobe"></label>
+        <div><span asp-validation-for="ImeOsobe" class="text-danger"></span></div>
+        <input asp-for="ImeOsobe" class="form-control" />
+    </div>
+    <div class="form-group samoosoba">
+        <label asp-for="PrezimeOsobe"></label>
+        <div><span asp-validation-for="PrezimeOsobe" class="text-danger"></span></div>
+        <input asp-for="PrezimeOsobe" class="form-control" />
+    </div> 
+    <div class="form-group">
+        <label asp-for="Oib"></label>
+        <div><span asp-validation-for="Oib" class="text-danger"></span></div>
+        <input asp-for="Oib" class="form-control" />
+    </div>     
+    <div class="form-group">
+        <label asp-for="AdrPartnera"></label>
+        <div><span asp-validation-for="AdrPartnera" class="text-danger"></span></div>
+        <input asp-for="AdrPartnera" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IdMjestaPartnera"></label>
+        <div><span asp-validation-for="IdMjestaPartnera" class="text-danger"></span></div>
+        <input class="form-control" data-autocomplete="mjesto"
+               data-autocomplete-result="mjestopartnera"
+               value="@Model.NazMjestaPartnera" />
+        <input type="hidden" asp-for="IdMjestaPartnera" data-autocomplete-result="mjestopartnera" />
+    </div> 
+    <div class="form-group">
+        <label asp-for="AdrIsporuke"></label>
+        <div><span asp-validation-for="AdrIsporuke" class="text-danger"></span></div>
+        <input asp-for="AdrIsporuke" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IdMjestaIsporuke"></label>
+        <div><span asp-validation-for="IdMjestaIsporuke" class="text-danger"></span></div>
+        <input class="form-control" data-autocomplete="mjesto"
+               data-autocomplete-result="mjestoisporuke"
+               value="@Model.NazMjestaIsporuke" />
+        <input type="hidden" asp-for="IdMjestaIsporuke" data-autocomplete-result="mjestoisporuke" />
+    </div> 
+
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Dodaj</button>
+        <a asp-action="Index" class="btn btn-secondary">Odustani</a>
+    </div>
+</form>
+
+@section styles{
+    <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/jquery-ui.css" />
+}
+
+@section scripts{
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="~/js/autocomplete.js"></script>
+
+    <script type="text/javascript">        
+        $(function () {            
+            $('input:radio').change(function () {
+                OsobaIliTvrtka($(this).val());
+            });
+
+            OsobaIliTvrtka($('input:checked').val());
+        });
+               
+        function OsobaIliTvrtka(tip) {            
+            if (tip == 'O') {
+                $(".samotvrtka").hide();
+                $(".samoosoba").show();
+            }
+            else {
+                $(".samoosoba").hide();
+                $(".samotvrtka").show();
+            }        
+        }
+    </script>
+}

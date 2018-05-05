@@ -1,0 +1,24 @@
+﻿@model MjestoViewModel
+
+<tr>
+  <td class="text-left">@Model.PostBrojMjesta</td>
+  <td class="text-left">@Model.NazivMjesta</td>
+  <td class="text-left">@Model.PostNazivMjesta</td>
+  <td class="text-left">@Model.NazivDrzave</td>
+  <td>
+      <a asp-action="Edit"
+         asp-route-page="@ViewBag.PagingInfo.CurrentPage"
+         asp-route-sort="@(((PagingInfo)ViewData["PagingInfo"]).Sort)"
+         asp-route-ascending="@ViewBag.PagingInfo.Ascending"
+         asp-route-id="@Model.IdMjesta"         
+         class="btn btn-sm" title="Ažuriraj"><i class="fas fa-edit"></i></a>
+  </td>
+  <td>
+    <form asp-action="Delete" method="post">
+      @*Neće se koristiti direktni submit, ali treba zbog anti forgery tokena*@
+      @*Jednako tako nije potreban ni ovaj input type=hidden ako skripta ispravno radi*@
+      <input type="hidden" name="id" value="@Model.IdMjesta" />
+      <button data-idmjesta="@Model.IdMjesta" class="btn btn-sm btn-danger deleteajax" title="Obriši"><i class="fas fa-trash-alt"></i></button>
+    </form>
+  </td>
+</tr>

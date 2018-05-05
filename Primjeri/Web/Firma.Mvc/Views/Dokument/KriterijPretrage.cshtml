@@ -1,0 +1,44 @@
+﻿@model DokumentFilter
+
+<form id="filterform" asp-action="Filter" method="post">
+    <div class="form-group row">
+        <label asp-for="IdPartnera" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-2">
+            <input asp-for="IdPartnera" readonly="readonly" class="form-control" data-autocomplete-result="partner" />
+        </div>
+        <div class="col-sm-6">
+            <input class="form-control" data-autocomplete="partner" asp-for="NazPartnera" />
+        </div>       
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Iznos</label>
+        <div class="col-sm-4">
+            <input asp-for="IznosOd" class="form-control" />
+        </div>
+        <div class="col-sm-1">
+            -
+        </div>
+        <div class="col-sm-4">
+            <input asp-for="IznosDo" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Datum</label>
+        <div class="col-sm-4">
+            <input asp-for="DatumOd" class="form-control" />
+        </div>
+        <div class="col-sm-1">
+            -
+        </div>
+        <div class="col-sm-4">
+            <input asp-for="DatumDo" prefix="Filter" class="form-control" />
+        </div>
+        <div class="col-sm-1 text-nowrap">
+            <button type="submit" class="btn btn-sm btn-primary" title="Postavi filter"><i class="fas fa-filter"></i></button>           
+               
+            <a class="btn btn-sm btn-primary" asp-action="Index" title="Ukloni filter">
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+    </div>
+</form>

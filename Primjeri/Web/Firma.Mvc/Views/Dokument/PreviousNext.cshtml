@@ -1,0 +1,37 @@
+﻿@model DokumentViewModel
+
+<div class="row text-center">
+    <div class="col-sm-2">
+        @if (ViewBag.Previous != null)
+        {
+        <a class="btn btn-sm btn-primary cancel"
+           asp-action="Edit"
+           asp-route-page="@ViewBag.Page"
+           asp-route-sort="@ViewBag.Sort"
+           asp-route-ascending="@ViewBag.Ascending"
+           asp-route-filter="@ViewBag.Filter"
+           asp-route-position="@(ViewBag.Position - 1)"
+           asp-route-id="@ViewBag.Previous">
+            <i class="fas fa-step-backward"></i>
+        </a>
+        }
+    </div>
+    <div class="col-sm-4">
+        <h4>Dokument br: @Model.IdDokumenta</h4>
+    </div>
+    <div class="col-sm-2">
+        @if (ViewBag.Next != null)
+        {
+        <a class="btn btn-sm btn-primary cancel" asp-action="Edit"
+           asp-route-page="@ViewBag.Page"
+           asp-route-sort="@ViewBag.Sort"
+           asp-route-ascending="@ViewBag.Ascending"
+           asp-route-filter="@ViewBag.Filter"
+           asp-route-position="@(ViewBag.Position + 1)"
+           asp-route-id="@ViewBag.Next">
+            <i class="fas fa-step-forward"></i>
+        </a>
+        }
+    </div>
+</div>
+

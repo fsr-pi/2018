@@ -1,0 +1,41 @@
+﻿@model Artikl
+
+<tr>
+    <td colspan="2">
+        @Model.SifArtikla
+        <input type="hidden" asp-for="SifArtikla" data-save="" />
+    </td>
+    <td>
+        <input asp-for="NazArtikla" class="form-control" data-save="" />
+    </td>
+    <td>
+        <input asp-for="JedMjere" class="form-control" data-save="" />
+    </td>
+    <td>
+        <input asp-for="CijArtikla" class="form-control" data-save="" />
+    </td>
+    <td>
+        <input asp-for="ZastUsluga" class="checkbox" data-save="" />
+    </td>
+    <td>
+        <input asp-for="TekstArtikla" class="form-control" data-save="" />
+    </td>   
+    <td>
+        <button type="submit" class="btn btn-sm btn-primary save" title="Spremi"><i class="fas fa-save"></i></button>
+    </td>
+    <td>
+        <button class="btn btn-sm cancel" title="Odustani"><i class="fas fa-undo-alt"></i></button>
+    </td>
+</tr>
+<tr>
+  <td colspan="3">
+    <input type="checkbox" name="obrisisliku" data-save="" />
+    <span class="text-info">Obriši sliku ?</span>
+  </td>
+  <td colspan="2">
+    <div asp-validation-summary="All"></div>
+  </td>
+  <td colspan="4">
+    Zamijeni sliku s nekom drugom <input type="file" name="slika" data-save="" />
+  </td>
+</tr>

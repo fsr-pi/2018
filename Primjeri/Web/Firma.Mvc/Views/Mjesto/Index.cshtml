@@ -1,43 +1,50 @@
-﻿@model IEnumerable<MjestoViewModel>
+﻿@model MjestaViewModel
+
 @{
-  ViewData["Title"] = "Popis mjesta";
+    ViewBag.Title += "Mjesta";
 }
+
 <h2>Popis mjesta</h2>
 
-<table class="table table-sm table-striped table-hover" id="tablemjesta">
-  <thead>
-    <tr>
-      <th>Poštanski broj mjesta</th>
-      <th>Naziv mjesta</th>
-      <th>Poštanski naziv mjesta</th>
-      <th>Država</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var mjesto in Model)
-    {
-      <tr>
-        <td class="text-center">@mjesto.PostBrojMjesta</td>
-        <td class="text-left">@mjesto.NazivMjesta</td>
-        <td class="text-center">@mjesto.PostNazivMjesta</td>
-        <td class="text-center">@mjesto.NazivDrzave</td>
-      </tr>
-    }
-  </tbody>
+
+<a asp-action="Create">Unos novog mjesta</a>
+
+<pager page-info="@Model.PagingInfo" page-action="Index" page-title="Unesite željenu stranicu"
+       class="float-right">
+</pager>
+
+
+<table class="table table-sm table-striped table-hover">
+    <thead>
+        <tr>
+            @{
+                string[] nazivi = { "Poštanski broj", "Naziv mjesta", "Poštanski naziv mjesta", "Država" };
+                for (int i = 1; i <= nazivi.Length; i++)
+                {
+                    <th>
+                        <a asp-route-sort="@i" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == i ? Model.PagingInfo.Ascending? false : true : true)">
+                            @nazivi[i - 1]
+                        </a>
+                    </th>
+                }
+            }
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mjesto in Model.Mjesta)
+        {
+            @await Html.PartialAsync("Row", mjesto,
+                     new ViewDataDictionary(this.ViewData) { { "PagingInfo", Model.PagingInfo } })
+        }
+    </tbody>
 </table>
 
-@section styles{
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
-}
-
 @section scripts{
-  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-  <script>
-    $(document).ready(function () {
-        $('#tablemjesta').DataTable({
-        language: tableLangSettings
-      });
-    });
-  </script>
+    <script type="text/javascript">
+        $(function () {
+            SetDeleteAjax(".deleteajax", '@Url.Action("Delete")', 'idmjesta');
+        });
+    </script>
 }

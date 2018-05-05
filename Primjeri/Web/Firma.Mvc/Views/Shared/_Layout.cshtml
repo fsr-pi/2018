@@ -26,6 +26,7 @@
 
     <main>
         <div>
+            <div id="tempmessage" class="alert"></div>
             @if (TempData[Constants.Message] != null)
             {
                 bool error = false;
@@ -42,7 +43,7 @@
     </main>
     <hr />
     <footer>
-        <p class="text-center">&copy; 2018 - RPPP, ZPR, FER</p>
+        <p class="text-center">&copy; 2018 - FER/FSRE</p>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -55,6 +56,7 @@
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/gotopage.js" asp-append-version="true"></script>
+    <script src="~/js/validation.js" asp-append-version="true"></script>
 
     @RenderSection("scripts", required: false)
 </body>

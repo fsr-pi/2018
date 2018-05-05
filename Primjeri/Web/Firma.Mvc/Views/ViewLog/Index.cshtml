@@ -1,0 +1,31 @@
+﻿@{
+  ViewData["Title"] = "Pregled tragova praćenja rada";
+}
+
+<form asp-action="Show" method="get">
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Pregledaj zapise za dan:</label>
+    <div class="col-sm-2">
+      <input name="dan" class="form-control datum" />
+    </div>
+    <div class="col-sm-1">
+      <button type="submit" class="btn btn-sm btn-primary" title="Dohvati"><i class="fas fa-check-circle"></i></button>
+    </div>
+  </div>
+</form>
+
+
+
+@section styles{
+  <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/jquery-ui.css" />
+}
+
+@section scripts{
+  <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+  <script src="~/lib/jquery-ui/ui/i18n/datepicker-hr.js"></script>  
+  <script>
+    $(".datum").datepicker({
+       dateFormat: "yy-mm-dd" //da se može prenijeti u get zahtjevu            
+    });
+  </script>
+}

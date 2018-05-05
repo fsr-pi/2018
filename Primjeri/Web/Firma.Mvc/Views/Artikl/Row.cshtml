@@ -1,0 +1,28 @@
+﻿@model ArtiklViewModel
+
+<tr>
+  <td class="text-left">
+    @if (Model.ImaSliku)
+    {
+      <img src="@Url.Action("GetImage", "Artikl", new { id = @Model.SifraArtikla, hash=Model.ImageHash })"
+           class="malaslika img-thumbnail" />
+    }
+  </td>
+  <td class="text-left">@Model.SifraArtikla</td>
+  <td class="text-left">@Model.NazivArtikla</td>
+  <td class="text-left">@Model.JedinicaMjere</td>
+  <td class="text-right text-nowrap">@Model.CijenaArtikla.ToString("C2")</td>
+  <td class="text-left"><input type="checkbox" @(Model.Usluga ? "checked" : "") disabled />  </td>
+  <td class="text-left">@Model.TekstArtikla</td>
+  <td>
+    <a data-sifartikla="@Model.SifraArtikla" class="btn btn-warning btn-sm editajax" title="Ažuriraj"><i class="fas fa-edit"></i></a>
+  </td>
+  <td>
+      <form asp-action="Delete" method="post">
+          @*Neće se koristiti direktni submit, ali treba zbog anti forgery tokena*@
+          <input type="hidden" name="id" value="@Model.SifraArtikla" />
+          <button data-sifartikla="@Model.SifraArtikla" class="btn btn-sm btn-danger deleteajax" title="Obriši"><i class="fas fa-trash-alt"></i></button>          
+      </form>
+
+  </td>
+</tr>

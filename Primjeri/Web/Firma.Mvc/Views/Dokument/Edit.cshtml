@@ -1,0 +1,108 @@
+﻿@model DokumentViewModel
+@{
+    ViewBag.Title += "Izmjena dokumenta";
+}
+
+@await Html.PartialAsync("PreviousNext")
+
+
+
+<div class="container">
+    <form id="dokument_form" method="post" asp-action="Edit"
+          asp-route-page="@ViewBag.Page"
+          asp-route-sort="@ViewBag.Sort"
+          asp-route-ascending="@ViewBag.Ascending"
+          asp-route-filter="@ViewBag.Filter"
+          asp-route-position="@ViewBag.Position">
+        <input type="hidden" asp-for="@Model.IdDokumenta" />
+        <div asp-validation-summary="All" class="form-group row"></div>
+
+        <div class="form-group row">
+            <label asp-for="VrDokumenta" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-1">
+                <select class="form-control" asp-for="VrDokumenta">
+                    <option disabled selected value=""></option>
+                    <option value="R">R-1</option>
+                    <option value="O">O</option>
+                </select>
+            </div>
+            <label asp-for="StopaPoreza" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-1">
+                <input asp-for="StopaPoreza" class="form-control" />
+            </div>
+            <label asp-for="DatDokumenta" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <input asp-for="DatDokumenta" class="form-control datum" />
+            </div>
+            <div class="col-sm-2">
+                <button id="save" type="submit" class="btn btn-sm btn-primary save" title="Spremi"><i class="fas fa-save"></i></button>
+                <a class="btn btn-sm btn-primary cancel"
+                   asp-action="Edit"
+                   asp-route-id="@Model.IdDokumenta"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   asp-route-filter="@ViewBag.Filter"
+                   asp-route-position="@ViewBag.Position"
+                   title="Osvježi">
+                    <i class="fas fa-sync-alt"></i>
+                </a>
+                <a class="btn btn-sm btn-primary cancel"
+                   asp-action="Index"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   asp-route-filter="@ViewBag.Filter"
+                   title="Odustani">
+                    <i class="fas fa-undo-alt"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="BrDokumenta" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <input asp-for="BrDokumenta" class="form-control" />
+            </div>
+            <label asp-for="IdPartnera" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-1">
+                <input asp-for="IdPartnera" readonly="readonly" class="form-control" data-autocomplete-result="partner" />
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control" data-autocomplete="partner" asp-for="@Model.NazPartnera" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="IdPrethDokumenta" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-1">
+                <input asp-for="IdPrethDokumenta" readonly="readonly" class="form-control" data-autocomplete-result="dokument" />
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control" data-autocomplete="dokument" value="@Model.NazPrethodnogDokumenta" />
+            </div>
+            <label asp-for="IznosDokumenta" class="col-sm-1 col-form-label"></label>
+            <label class="col-sm-2 col-form-label">@Model.IznosDokumenta.ToString("C2")</label>
+
+        </div>
+
+
+
+        <div class="col-sm-10">
+            @Html.Partial("Stavke", Model.Stavke)
+        </div>
+    </form>
+</div>
+
+@await Html.PartialAsync("NovaStavkaTemplate")
+
+@section styles{
+    <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/jquery-ui.css" />
+}
+
+@section scripts{
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-ui/ui/i18n/datepicker-hr.js"></script>
+    <script src="~/js/autocomplete.js"></script>
+    <script src="~/js/dokumenti.js"></script>
+}

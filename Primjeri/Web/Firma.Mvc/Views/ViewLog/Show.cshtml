@@ -1,0 +1,49 @@
+﻿@using Firma.Mvc.ViewModels;
+@model IEnumerable<LogEntry>
+@{
+  ViewData["Title"] = "Pregled log datoteka";
+}
+<h2>Zapisi u log datoteci za dan @(((DateTime) ViewBag.Dan).ToString("dd.MM.yyyy."))</h2>
+
+<table class="table table-sm table-striped table-hover" id="logtable">
+  <thead>
+    <tr>
+      <th>Vrijeme</th>
+      <th>Id</th>
+      <th>Upravljač</th>
+      <th>Level</th>
+      <th>Message</th>
+      <th>Url</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var entry in Model)
+    {
+      <tr class="@(entry.Level == "ERROR" ? "bg-danger" : (entry.Level == "WARN" ? "bg-warning" : ""))">
+        <td class="text-center">@entry.Time.ToString("HH:mm:ss")</td>
+        <td class="text-left">@entry.Id</td>
+        <td class="text-center">@entry.Controller</td>
+        <td class="text-center">@entry.Level</td>
+        <td class="text-center">@entry.Message</td>
+        <td class="text-center">@entry.Url</td>
+        <td class="text-center">@entry.Action</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@section styles{
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+}
+
+@section scripts{
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('#logtable').DataTable({
+              language: tableLangSettings
+          });
+      });
+  </script>
+}
