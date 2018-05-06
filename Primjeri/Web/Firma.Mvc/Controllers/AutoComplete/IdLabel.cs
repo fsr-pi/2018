@@ -1,14 +1,19 @@
-﻿namespace Firma.Mvc.Controllers.AutoComplete
+﻿using System.Runtime.Serialization;
+
+namespace Firma.Mvc.Controllers.AutoComplete
 {
-    public class IdLabel
+  [DataContract]
+  public class IdLabel
+  {
+    [DataMember(Name = "label")]
+    public string Label { get; set; }
+    [DataMember(Name = "id")]
+    public int Id { get; set; }
+    public IdLabel() { }
+    public IdLabel(int id, string label)
     {
-        public string Label { get; set; }
-        public int Id { get; set; }
-        public IdLabel() { }
-        public IdLabel(int id, string label)
-        {
-            Id = id;
-            Label = label;
-        }        
+      Id = id;
+      Label = label;
     }
+  }
 }

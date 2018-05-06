@@ -34,6 +34,7 @@ namespace Firma.Mvc.Controllers.AutoComplete
           
             var list = query.OrderBy(l => l.Label)
                             .ThenBy(l => l.Id)
+                            .Take(appData.AutoCompleteCount)
                             .ToList();
 
             //var queryOsobe = ctx.Osoba                                                      

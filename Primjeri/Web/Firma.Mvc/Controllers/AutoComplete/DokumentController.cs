@@ -25,7 +25,7 @@ namespace Firma.Mvc.Controllers.AutoComplete
         public IEnumerable<IdLabel> Get(string term)
         {                       
             var query = ctx.ViewDokumentInfo                            
-                            .FromSql(Constants.SqlViewDokumenti)
+                            .FromSql(Constants.SqlViewDokumenti)                            
                             .Select(p => new IdLabel
                             {
                                 Id = p.IdDokumenta,
@@ -35,6 +35,7 @@ namespace Firma.Mvc.Controllers.AutoComplete
           
             var list = query.OrderBy(l => l.Label)
                             .ThenBy(l => l.Id)
+                            .Take(appData.AutoCompleteCount)
                             .ToList();
            
             return list;

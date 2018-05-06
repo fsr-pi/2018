@@ -25,14 +25,14 @@ namespace Firma.Mvc.Controllers.AutoComplete
         {
             var query = ctx.Artikl
                            .Where(a => a.NazArtikla.Contains(term))
-                           .OrderBy(a => a.NazArtikla)
+                           .OrderBy(a => a.NazArtikla)                           
                            .Select(a => new Artikl
                            {
                                Id = a.SifArtikla,
                                Label = a.NazArtikla,
                                Cijena = a.CijArtikla
                            });
-            var list = query.ToList();
+            var list = query.Take(appData.AutoCompleteCount).ToList();
             return list;
         }       
     }

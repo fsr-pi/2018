@@ -46,6 +46,7 @@ namespace Firma.Mvc.Controllers
       int count = query.Count();
       if (count == 0)
       {
+        logger.LogInformation("Ne postoji nijedna država");
         TempData[Constants.Message] = "Ne postoji niti jedna država.";
         TempData[Constants.ErrorOccurred] = false;
         return RedirectToAction(nameof(Create));
