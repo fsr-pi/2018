@@ -37,8 +37,8 @@ namespace Firma.Mvc.Tests
       //imitacija sučelja IOptionsSnapshot<AppSettings>
       var mockOptions = new Mock<IOptionsSnapshot<AppSettings>>();
       var appSettings = new AppSettings
-      {        
-        AutoCompleteCount = 50 //ostali argumenti su nebitni za ovu grupu testova
+      {
+        AutoCompleteCount = appSection.GetValue<int>("AutoCompleteCount") //ostali argumenti su nebitni za ovu grupu testova
       };
       mockOptions.SetupGet(appsettings => appsettings.Value).Returns(appSettings);
       options = mockOptions.Object;      
