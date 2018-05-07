@@ -1,0 +1,34 @@
+# Dokumentacija projekta **Firma.MVC**.
+
+##Svrha primjera
+Primjerom se ilustrira nekoliko karakterističnih primjera korištenja MVC-a i ASP.NET Corea
+
+Primjer s državama prikazuje podatke iz tablice koja nema stranih ključeva. Prilikom pregleda
+prikazuje se po n podataka po stranici pri čemu je podatak o broju elemenata po stranici
+zapisan u konfiguracijskoj datoteci appsettings.json (novitet iz .NET Corea).
+
+Također se vodi računa o tome da ako krenemo u ažuriranje neke države da se nakon ažuriranja vratimo
+na istu stranicu na kojoj smo bili prije odlaska na edit
+
+Omogućeno je dodavanje novih država, ažuriranje i brisanje postojećih, pri čemu se
+ažuriranje obavlja na posebnoj stranici
+
+Primjer s partnerima je primjer hijerarhije klasa Partner, Tvrtka i Osoba, što je u bazi podataka
+modelirano u obliku TPT (Table per type). Spojeni podaci dohvaćaju se preko pogleda koji je naknadno
+ručno dodan u data model.
+
+Kod dodavanja nove tvrtke pomoću javascripta se dinamički mijenjaju kontrole za unos ovisno radi se li se
+o tvrtki ili osobi, a odabir mjesta se vrši pomoću padajuće liste
+
+Popis mjesta ilustrira odabir vrijednosti stranog ključa iz ograničenog skupa vrijednosti
+pomoću padajuće liste, te dinamičko brisanje retka koristeći ajax i javascript
+
+Primjer s dokumentima je primjer master-detail forme kod koje je odabir stranog ključa
+za veliki broj mogućnosti izveden javascriptom pomoću autocompleta uz korištenjem
+Web API controllera.
+
+Dodatno, projektom je demonstrirano generiranje PDF izvještaja te praćenje traga rada aplikacije
+koristeći programski paket NLog.
+
+##Napomena
+Za formatiranje ovog dokumenta korišten je [Markdown](https://daringfireball.net/projects/markdown/syntax)
