@@ -5,7 +5,7 @@
     @if (Model.ImaSliku)
     {
       <img src="@Url.Action("GetImage", "Artikl", new { id = @Model.SifraArtikla, hash=Model.ImageHash })"
-           class="malaslika img-thumbnail" />
+           class="malaslika" />
     }
   </td>
   <td class="text-left">@Model.SifraArtikla</td>
