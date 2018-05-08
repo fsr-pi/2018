@@ -99,6 +99,80 @@ namespace Firma.Mvc.Controllers
       return RedirectToAction(nameof(Index), new { filter = filter.ToString() });
     }
 
+    public IActionResult Show(int id, int position, string filter, int page = 1, int sort = 1, bool ascending = true)
+    {
+      ViewBag.Page = page;
+      ViewBag.Sort = sort;
+      ViewBag.Ascending = ascending;
+      ViewBag.Filter = filter;
+      ViewBag.Position = position;
+
+      var dokument = ctx.Dokument
+                        .Where(d => d.IdDokumenta == id)
+                        .Select(d => new DokumentViewModel
+                        {
+                          BrDokumenta = d.BrDokumenta,
+                          DatDokumenta = d.DatDokumenta,
+                          IdDokumenta = d.IdDokumenta,
+                          IdPartnera = d.IdPartnera,
+                          IdPrethDokumenta = d.IdPrethDokumenta,
+                          IznosDokumenta = d.IznosDokumenta,
+                          PostoPorez = d.PostoPorez,
+                          VrDokumenta = d.VrDokumenta
+                        })
+                        .FirstOrDefault();
+      if (dokument == null)
+      {
+        return NotFound($"Dokument {id} ne postoji");
+      }
+      else
+      {
+        SetPreviousAndNext(position, filter, sort, ascending);
+        string tipPartnera = ctx.Partner
+                                .Where(p => p.IdPartnera == dokument.IdPartnera)
+                                .Select(p => p.TipPartnera)
+                                .Single();
+        if (tipPartnera == "O")
+        {
+          dokument.NazPartnera = ctx.Osoba
+                                .Where(p => p.IdOsobe == dokument.IdPartnera)
+                                .Select(p => p.PrezimeOsobe + ", " + p.ImeOsobe + " (" + p.IdOsobeNavigation.Oib + ")")
+                                .Single();
+        }
+        else
+        {
+          dokument.NazPartnera = ctx.Tvrtka
+                                .Where(p => p.IdTvrtke == dokument.IdPartnera)
+                                .Select(p => p.NazivTvrtke + " (" + p.IdTvrtkeNavigation.Oib + ")")
+                                .Single();
+        }
+        if (dokument.IdPrethDokumenta.HasValue)
+        {
+          dokument.NazPrethodnogDokumenta = ctx.ViewDokumentInfo
+                                           .FromSql(Constants.SqlViewDokumenti)
+                                           .Where(d => d.IdDokumenta == dokument.IdPrethDokumenta)
+                                           .Select(d => d.IdDokumenta + " " + d.NazPartnera + " " + d.IznosDokumenta)
+                                           .FirstOrDefault();
+        }
+        //učitavanje stavki
+        var stavke = ctx.Stavka
+                        .Where(s => s.IdDokumenta == dokument.IdDokumenta)
+                        .OrderBy(s => s.IdStavke)
+                        .Select(s => new StavkaViewModel
+                        {
+                          IdStavke = s.IdStavke,
+                          JedCijArtikla = s.JedCijArtikla,
+                          KolArtikla = s.KolArtikla,
+                          NazArtikla = s.SifArtiklaNavigation.NazArtikla,
+                          PostoRabat = s.PostoRabat,
+                          SifArtikla = s.SifArtikla
+                        })
+                        .ToList();
+        dokument.Stavke = stavke;
+        return View(dokument);
+      }
+    }
+
     [HttpGet]
     public IActionResult Create()
     {

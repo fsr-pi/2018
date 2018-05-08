@@ -1,0 +1,132 @@
+﻿@model DokumentViewModel
+@{
+    ViewBag.Title += "Dokument br. " + @Model.IdDokumenta;
+}
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-2">
+            @if (ViewBag.Previous != null)
+            {
+                <a class="btn btn-sm btn-primary"
+                   asp-action="Show"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   asp-route-filter="@ViewBag.Filter"
+                   asp-route-position="@(ViewBag.Position - 1)"
+                   asp-route-id="@ViewBag.Previous">
+                    <i class="fas fa-step-backward"></i>
+                </a>
+            }
+        </div>
+        <div class="col-sm-8">
+            <h4>
+                @Model.BrDokumenta/@Model.VrDokumenta/@DateTime.Now.ToString("d.M.yyyy.")
+                - @Model.NazPartnera
+            </h4>
+        </div>
+        <div class="col-sm-2">
+            @if (ViewBag.Next != null)
+            {
+                <a class="btn btn-sm btn-primary" asp-action="Show"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   asp-route-filter="@ViewBag.Filter"
+                   asp-route-position="@(ViewBag.Position + 1)"
+                   asp-route-id="@ViewBag.Next">
+                    <i class="fas fa-step-forward"></i>
+                </a>
+            }
+        </div>
+    </div>
+
+
+    @if (Model.IdPrethDokumenta != null)
+    {
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-2">
+            Prethodni dokument:
+        </div>
+        <div class="col-sm-6">
+            <a asp-action="Show" asp-route-id="@Model.IdPrethDokumenta" target="_blank">@Model.NazPrethodnogDokumenta</a>
+        </div>
+    </div>
+    }
+
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-2">
+            PDV: @Model.PostoPorez.ToString("P2")
+        </div>
+        <div class="col-sm-2">
+            Iznos: @Model.IznosDokumenta.ToString("C2")
+        </div>
+        <div class="col-sm-1 text-right">
+            <a asp-action="Edit"
+               asp-route-id="@Model.IdDokumenta"
+               target="_blank"
+               class="btn btn-warning btn-sm" title="Ažuriraj"><i class="fas fa-edit"></i></a>
+        </div>
+        <form asp-action="Delete" method="post"
+              asp-route-page="@ViewBag.Page"
+              asp-route-sort="@ViewBag.Sort"
+              asp-route-ascending="@ViewBag.Ascending"
+              asp-route-filter="@ViewBag.Filter">
+            <input type="hidden" name="IdDokumenta" value="@Model.IdDokumenta" />
+            <button type="submit" class="btn btn-sm btn-danger delete" title="Obriši"><i class="fas fa-trash-alt"></i></button>
+        </form>
+        <div class="col-sm-1 text-left">
+            <a class="btn btn-sm btn-primary cancel"
+               asp-action="Index"
+               asp-route-page="@ViewBag.Page"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-ascending="@ViewBag.Ascending"
+               asp-route-filter="@ViewBag.Filter"
+               title="Povratak na popis dokumenata">
+                <i class="fas fa-undo-alt"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @{
+                        string[] nazivi = { "Artikl", "Količina", "Rabat", "Jedinična cijena", "Iznos" };
+                        for (int i = 0; i < nazivi.Length; i++)
+                        {
+                            <th class="text-center">
+                                @nazivi[i]
+                            </th>
+                        }
+                    }
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stavka in Model.Stavke)
+                {
+                    <tr>
+                        <td class="text-left col-sm-4">
+                            @stavka.NazArtikla
+                        </td>
+                        <td class="text-right col-sm-1">
+                            @stavka.KolArtikla.ToString("N2")
+                        </td>
+                        <td class="text-center col-sm-1">
+                            @stavka.PostoRabat.ToString("P2")
+                        </td>
+                        <td class="text-right col-sm-2">
+                            @stavka.JedCijArtikla.ToString("C2")
+                        </td>
+                        <td class="text-right col-sm-2">
+                            @stavka.IznosArtikla.ToString("C2")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

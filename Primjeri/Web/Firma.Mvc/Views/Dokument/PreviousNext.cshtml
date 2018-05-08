@@ -4,7 +4,7 @@
     <div class="col-sm-2">
         @if (ViewBag.Previous != null)
         {
-        <a class="btn btn-sm btn-primary cancel"
+        <a class="btn btn-sm btn-primary"
            asp-action="Edit"
            asp-route-page="@ViewBag.Page"
            asp-route-sort="@ViewBag.Sort"
@@ -22,7 +22,7 @@
     <div class="col-sm-2">
         @if (ViewBag.Next != null)
         {
-        <a class="btn btn-sm btn-primary cancel" asp-action="Edit"
+        <a class="btn btn-sm btn-primary" asp-action="Edit"
            asp-route-page="@ViewBag.Page"
            asp-route-sort="@ViewBag.Sort"
            asp-route-ascending="@ViewBag.Ascending"
