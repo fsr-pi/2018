@@ -10,7 +10,7 @@
             resultplaceholder = url;
         $(element).blur(function () {
             if ($(element).val().length === 0) {
-                $("[data-autocomplete-result='" + resultplaceholder + "']").val('');
+                $("[data-autocomplete-result-for='" + resultplaceholder + "']").val('');
             }
         });
 
@@ -20,7 +20,7 @@
             minLength: 1,
             select: function (event, ui) {
                 $(element).val(ui.item.label);               
-                $("[data-autocomplete-result='" + resultplaceholder + "']").val(ui.item.id);                
+                $("[data-autocomplete-result-for='" + resultplaceholder + "']").val(ui.item.id);                
             }
         });
     });
