@@ -1,4 +1,4 @@
-using Firma.Mvc.Controllers.AutoComplete;
+Ôªøusing Firma.Mvc.Controllers.AutoComplete;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System;
@@ -27,8 +27,8 @@ namespace Firma.Mvc.IntegrationTest
 
     [Theory]
     [Trait("IntegrationTest", "AutoCompleteMjesto")]
-    [InlineData("»apljina", 88300)]
-    [InlineData("»APLJINA", 88300)]
+    [InlineData("ƒçapljina", 88300)]
+    [InlineData("ƒåAPLJINA", 88300)]
 
     public async Task VracaSamoJedanGrad(string naziv, int pbr)
     {
@@ -48,7 +48,7 @@ namespace Firma.Mvc.IntegrationTest
 
     [Theory]
     [Trait("IntegrationTest", "AutoCompleteMjesto")]
-    [InlineData("NepostojeÊi grad")]
+    [InlineData("Nepostojeƒái grad")]
     public async Task VracaPrazanPopisGradova(string naziv)
     {
       // Act
@@ -66,8 +66,8 @@ namespace Firma.Mvc.IntegrationTest
     [Trait("IntegrationTest", "AutoCompleteMjesto")]        
     [InlineData("ara")]
     [InlineData("din")]
-    [InlineData("VARAéDIN")]
-    [InlineData("Varaûdin")]
+    [InlineData("VARA≈ΩDIN")]
+    [InlineData("Vara≈ædin")]
 
     public async Task VracaViseGradova(string naziv)
     {

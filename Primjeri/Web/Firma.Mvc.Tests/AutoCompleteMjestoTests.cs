@@ -84,7 +84,7 @@ namespace Firma.Mvc.Tests
       IEnumerable<IdLabel> result = controller.Get(value);
 
       //Assert
-      result.Should().HaveCount(count, $"because there should at least {count} places conataing text {value}");
+      result.Should().HaveCount(count, $"because there should at least {count} places containing text {value}");
     }
   }
 }
